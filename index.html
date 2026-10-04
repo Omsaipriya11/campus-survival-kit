@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Survival Kit</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">🎒</div>
+
+            <div>
+                <h1>Campus Survival Kit</h1>
+                <p>Your campus life command center</p>
+            </div>
+        </div>
+
+        <div class="survival-badge">
+            🛡️ Student Mode
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">CAMPUS SURVIVAL SYSTEM</span>
+
+                <h2>
+                    Survive campus.
+                    <span>One problem at a time.</span>
+                </h2>
+
+                <p>
+                    Forgot something? Exam tomorrow? Coding deadline?
+                    Find a quick plan, track your essentials and stay ready
+                    for whatever campus throws at you.
+                </p>
+
+                <button class="primary-btn" onclick="scrollToSurvival()">
+                    Find My Survival Plan →
+                </button>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <div class="backpack">
+                    🎒
+                </div>
+
+                <div class="floating-item item-one">📚</div>
+                <div class="floating-item item-two">💻</div>
+                <div class="floating-item item-three">☕</div>
+                <div class="floating-item item-four">🪪</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+
+                <div>
+                    <span>Completed</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+
+                <div>
+                    <span>Total Essentials</span>
+                    <strong id="totalCount">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+
+                <div>
+                    <span>Survival Score</span>
+                    <strong id="survivalScore">0%</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">💡</div>
+
+                <div>
+                    <span>Tips Collected</span>
+                    <strong id="tipsCount">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- SURVIVAL MODE -->
+        <section class="survival-section" id="survivalSection">
+
+            <div class="section-heading">
+
+                <span class="section-label">SURVIVAL MODE</span>
+
+                <h3>What's happening right now?</h3>
+
+                <p>
+                    Pick your situation and get an instant survival plan.
+                </p>
+
+            </div>
+
+
+            <div class="situation-grid">
+
+                <button class="situation-card" onclick="showPlan('exam')">
+                    <span>📚</span>
+                    <strong>Exam Tomorrow</strong>
+                    <small>Need a last-minute study plan</small>
+                </button>
+
+
+                <button class="situation-card" onclick="showPlan('forgot')">
+                    <span>😵</span>
+                    <strong>Forgot Something</strong>
+                    <small>Find out what to do next</small>
+                </button>
+
+
+                <button class="situation-card" onclick="showPlan('coding')">
+                    <span>💻</span>
+                    <strong>Coding Deadline</strong>
+                    <small>Project due very soon</small>
+                </button>
+
+
+                <button class="situation-card" onclick="showPlan('unproductive')">
+                    <span>🫠</span>
+                    <strong>Feeling Unproductive</strong>
+                    <small>Get yourself moving</small>
+                </button>
+
+
+                <button class="situation-card" onclick="showPlan('presentation')">
+                    <span>🎤</span>
+                    <strong>Presentation Soon</strong>
+                    <small>Prepare without panic</small>
+                </button>
+
+
+                <button class="situation-card" onclick="showPlan('emergency')">
+                    <span>🚨</span>
+                    <strong>Campus Emergency</strong>
+                    <small>Follow basic safety steps</small>
+                </button>
+
+            </div>
+
+
+            <!-- PLAN RESULT -->
+            <div class="plan-result" id="planResult">
+
+                <div class="plan-header">
+
+                    <div class="plan-icon" id="planIcon">
+                        🎯
+                    </div>
+
+                    <div>
+                        <span class="section-label">YOUR SURVIVAL PLAN</span>
+                        <h3 id="planTitle">Choose a situation</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="plan-content">
+
+                    <p id="planDescription">
+                        Select one of the situations above to get started.
+                    </p>
+
+                    <div id="planSteps" class="plan-steps"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESSENTIAL CHECKLIST -->
+        <section class="tool-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">ESSENTIAL CHECKLIST</span>
+
+                <h3>Is your campus bag ready?</h3>
+
+                <p>
+                    Keep track of the things you don't want to forget.
+                </p>
+
+            </div>
+
+
+            <div class="progress-wrapper">
+
+                <div class="progress-info">
+                    <span>Survival readiness</span>
+                    <strong id="progressText">0%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="category-buttons">
+
+                <button class="category-btn active" onclick="filterItems('all', this)">
+                    All
+                </button>
+
+                <button class="category-btn" onclick="filterItems('academic', this)">
+                    📚 Academic
+                </button>
+
+                <button class="category-btn" onclick="filterItems('tech', this)">
+                    💻 Tech
+                </button>
+
+                <button class="category-btn" onclick="filterItems('daily', this)">
+                    🎒 Daily
+                </button>
+
+                <button class="category-btn" onclick="filterItems('emergency', this)">
+                    🚨 Emergency
+                </button>
+
+            </div>
+
+
+            <div id="checklistContainer" class="checklist-grid"></div>
+
+        </section>
+
+
+        <!-- QUICK TOOLS -->
+        <section class="quick-tools-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">QUICK TOOLS</span>
+
+                <h3>Need something right now?</h3>
+
+            </div>
+
+
+            <div class="quick-tools">
+
+                <button class="quick-tool" onclick="startTimer()">
+                    <span>⏱️</span>
+                    <strong>25 Min Focus</strong>
+                    <small>Start a quick focus session</small>
+                </button>
+
+
+                <button class="quick-tool" onclick="generateTip()">
+                    <span>💡</span>
+                    <strong>Random Tip</strong>
+                    <small>Give me a campus survival tip</small>
+                </button>
+
+
+                <button class="quick-tool" onclick="copyChecklist()">
+                    <span>📋</span>
+                    <strong>Copy Checklist</strong>
+                    <small>Copy your essentials</small>
+                </button>
+
+
+                <button class="quick-tool" onclick="resetChecklist()">
+                    <span>🔄</span>
+                    <strong>Reset Checklist</strong>
+                    <small>Start your checklist again</small>
+                </button>
+
+            </div>
+
+
+            <div class="tip-box" id="tipBox">
+
+                <div class="tip-icon">💡</div>
+
+                <div>
+                    <span>QUICK SURVIVAL TIP</span>
+                    <p id="tipText">
+                        Never leave your charger at home on a long campus day.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMERGENCY CONTACTS -->
+        <section class="emergency-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">SAFETY</span>
+
+                <h3>Emergency contacts</h3>
+
+                <p>
+                    Replace these placeholders with your institution's actual contacts.
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+                    <span>🚨</span>
+                    <div>
+                        <strong>Campus Security</strong>
+                        <small id="securityNumber">Add campus number</small>
+                    </div>
+                    <button onclick="editContact('security')">Edit</button>
+                </div>
+
+
+                <div class="contact-card">
+                    <span>🏥</span>
+                    <div>
+                        <strong>Campus Medical</strong>
+                        <small id="medicalNumber">Add medical number</small>
+                    </div>
+                    <button onclick="editContact('medical')">Edit</button>
+                </div>
+
+
+                <div class="contact-card">
+                    <span>🏢</span>
+                    <div>
+                        <strong>College Office</strong>
+                        <small id="officeNumber">Add office number</small>
+                    </div>
+                    <button onclick="editContact('office')">Edit</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TIMER MODAL -->
+    <div class="modal-overlay" id="timerModal">
+
+        <div class="timer-modal">
+
+            <button class="close-btn" onclick="closeTimer()">×</button>
+
+            <span class="section-label">FOCUS MODE</span>
+
+            <h2>25 Minute Focus</h2>
+
+            <div class="timer-circle">
+
+                <span id="timerDisplay">25:00</span>
+
+            </div>
+
+            <p id="timerStatus">
+                Focus on one task. No distractions.
+            </p>
+
+            <div class="timer-actions">
+
+                <button class="primary-btn" onclick="toggleTimer()" id="timerButton">
+                    Start
+                </button>
+
+                <button class="secondary-btn" onclick="resetTimer()">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <div>
+            <strong>Campus Survival Kit</strong>
+            <p>Built for students who have seen enough campus chaos.</p>
+        </div>
+
+        <span>© 2026 Campus Survival Kit</span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
